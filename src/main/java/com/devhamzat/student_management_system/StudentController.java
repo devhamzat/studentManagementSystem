@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/student")
@@ -18,4 +19,9 @@ public class StudentController {
     public List<Students> getStudents(){
        return studentService.getStudents();
    }
+   @PutMapping("{studentId}")
+    public Students updateStudent(@PathVariable("studentId")Long id, @RequestBody Students students){
+       return studentService.updateStudents(id,students);
+   }
+
 }

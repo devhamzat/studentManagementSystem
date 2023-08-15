@@ -20,7 +20,7 @@ public class Students {
     )
 
     private  Long id;
-    @JsonProperty("firstName")
+
     private String firstName;
     @JsonProperty("lastName")
     private String lastName;
@@ -29,9 +29,18 @@ public class Students {
     private String email;
     @JsonProperty("department")
     private String department;
+    private  String gender;
 
 
-
+    public Students() {
+        this.studentId = studentId;
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.department = department;
+        this.gender = gender;
+    }
 
     public UUID getStudentId() {
         return studentId;

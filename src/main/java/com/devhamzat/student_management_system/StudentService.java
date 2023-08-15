@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class StudentService {
@@ -18,5 +19,9 @@ public class StudentService {
 
     public List<Students> getStudents(){
         return studentRepository.findAll();
+    }
+    public Students updateStudents (Long id,Students students){
+        students.setId(id);
+        return studentRepository.save(students);
     }
 }
