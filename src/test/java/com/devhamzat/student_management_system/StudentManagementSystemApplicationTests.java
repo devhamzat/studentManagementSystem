@@ -10,4 +10,7 @@ class StudentManagementSystemApplicationTests {
     void contextLoads() {
     }
 
+    @Test
+    void name() {
+    }
 }
