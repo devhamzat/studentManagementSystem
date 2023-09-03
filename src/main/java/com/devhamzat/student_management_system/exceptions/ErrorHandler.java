@@ -1,4 +1,4 @@
-package com.devhamzat.student_management_system;
+package com.devhamzat.student_management_system.exceptions;
 
 import com.devhamzat.student_management_system.exceptions.ApplicationError;
 import com.devhamzat.student_management_system.exceptions.StudentNotFound;
@@ -19,7 +19,7 @@ public class ErrorHandler extends ResponseEntityExceptionHandler {
     private String details;
 
     @ExceptionHandler(StudentNotFound.class)
-    public ResponseEntity <ApplicationError> handleStudentNotFound(StudentNotFound exception, WebRequest webRequest){
+    public ResponseEntity<ApplicationError> handleStudentNotFound(StudentNotFound exception, WebRequest webRequest) {
         ApplicationError error = new ApplicationError();
         error.setCode(404);
         error.setMessage(exception.getMessage());
