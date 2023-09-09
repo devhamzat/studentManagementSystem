@@ -1,9 +1,18 @@
 package com.devhamzat.student_management_system.entity;
 
 import com.devhamzat.student_management_system.utils.Gender;
+import com.devhamzat.student_management_system.utils.RoleType;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 
-@Entity(name = "lecturers")
+
+@Entity()
+@Table(
+        name = "lecturers",
+        uniqueConstraints = {
+                @UniqueConstraint(name = "lecturers_email_unique", columnNames = "email")
+        }
+)
 public class Lecturers {
 
     @Id
@@ -19,16 +28,29 @@ public class Lecturers {
             updatable = false
     )
     private Long id;
-    private Gender gender;
+
+    @JsonProperty("firstName")
     private String firstName;
+    @JsonProperty("lastName")
     private String lastname;
+    @JsonProperty("email")
     private String email;
+    @Column(name = "gender",
+            nullable = false
+    )
+    @JsonProperty("sex")
+    private Gender gender;
+    @JsonProperty("address")
     private String address;
-    private  String phoneNumber;
+    @Column(name = "roletype",
+            nullable = false
+    )
+    @JsonProperty("role type ")
+    private RoleType roleType;
 
     @OneToOne(mappedBy = "lecturer")
     @JoinColumn(name = "course_id", referencedColumnName = "id")
-    private  Courses course;
+    private Courses course;
 
     public Long getId() {
         return id;
@@ -36,14 +58,6 @@ public class Lecturers {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Gender getGender() {
-        return gender;
-    }
-
-    public void setGender(Gender gender) {
-        this.gender = gender;
     }
 
     public String getFirstName() {
@@ -70,6 +84,14 @@ public class Lecturers {
         this.email = email;
     }
 
+    public Gender getGender() {
+        return gender;
+    }
+
+    public void setGender(Gender gender) {
+        this.gender = gender;
+    }
+
     public String getAddress() {
         return address;
     }
@@ -78,12 +100,12 @@ public class Lecturers {
         this.address = address;
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
+    public RoleType getRoleType() {
+        return roleType;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void setRoleType(RoleType roleType) {
+        this.roleType = roleType;
     }
 
     public Courses getCourse() {
@@ -92,5 +114,20 @@ public class Lecturers {
 
     public void setCourse(Courses course) {
         this.course = course;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Lecturers{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastname='" + lastname + '\'' +
+                ", email='" + email + '\'' +
+                ", gender=" + gender +
+                ", address='" + address + '\'' +
+                ", roleType=" + roleType +
+                ", course=" + course +
+                '}';
     }
 }

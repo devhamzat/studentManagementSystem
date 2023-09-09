@@ -11,6 +11,6 @@ import java.util.Optional;
 public interface StudentRepository extends JpaRepository<Students, Long> {
     @Query("SELECT s FROM  Students s WHERE s.email =?1")
     Optional<Students> findStudentsByEmail(String email);
-    Optional<Students> findStudentsById(Long id);
 
+    Optional<Students> findStudentsById(Long id);
 }
