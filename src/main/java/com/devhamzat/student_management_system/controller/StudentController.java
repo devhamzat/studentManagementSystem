@@ -2,6 +2,8 @@ package com.devhamzat.student_management_system.controller;
 
 import com.devhamzat.student_management_system.entity.Students;
 import com.devhamzat.student_management_system.service.RegistrationService;
+import com.devhamzat.student_management_system.service.StudentRegistrationFactory;
+import com.devhamzat.student_management_system.service.StudentRegistrationService;
 import com.devhamzat.student_management_system.service.StudentService;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +19,11 @@ public class StudentController {
 
     @Autowired
     private StudentService studentService;
+
+    @Autowired
+    private StudentRegistrationFactory studentRegistrationFactory;
+
+
 //    @Autowired
 //    private RegistrationService registrationService;
 
@@ -29,7 +36,7 @@ public class StudentController {
 
     @PostMapping
     public void addStudents(@RequestBody Students students) {
-        studentService.addStudents(students);
+        studentRegistrationFactory.registerStudent(students);
     }
 
     @GetMapping

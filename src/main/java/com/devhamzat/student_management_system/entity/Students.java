@@ -1,6 +1,7 @@
 package com.devhamzat.student_management_system.entity;
 
 import com.devhamzat.student_management_system.utils.Gender;
+import com.devhamzat.student_management_system.utils.StudentType;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 
@@ -60,6 +61,8 @@ public class Students {
     )
     @JsonProperty("sex")
     private Gender gender;
+    private StudentType studentType ;
+
 
     @Column(name = "date of birth",
             nullable = false
@@ -88,6 +91,8 @@ public class Students {
 
     @OneToMany(mappedBy = "students")
     private Set<Registration> registrations;
+
+
 
 
     public Students() {
@@ -188,5 +193,13 @@ public class Students {
 
     public void setRegistrations(Set<Registration> registrations) {
         this.registrations = registrations;
+    }
+
+    public StudentType getStudentType() {
+        return studentType;
+    }
+
+    public void setStudentType(StudentType studentType) {
+        this.studentType = studentType;
     }
 }
