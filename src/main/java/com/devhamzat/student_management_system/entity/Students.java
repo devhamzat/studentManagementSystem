@@ -1,11 +1,9 @@
 package com.devhamzat.student_management_system.entity;
 
 import com.devhamzat.student_management_system.utils.Gender;
-import com.devhamzat.student_management_system.utils.RoleType;
+import com.devhamzat.student_management_system.utils.StudentType;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.Pattern;
 
 import java.time.LocalDate;
 import java.time.Period;
@@ -51,10 +49,6 @@ public class Students {
             nullable = false
     )
     @JsonProperty("email")
-    @Email(
-            regexp = "[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,3}",
-            flags = Pattern.Flag.CASE_INSENSITIVE
-    )
     private String email;
 
     @Column(name = "address",
@@ -67,6 +61,8 @@ public class Students {
     )
     @JsonProperty("sex")
     private Gender gender;
+    private StudentType studentType ;
+
 
     @Column(name = "date of birth",
             nullable = false
@@ -76,6 +72,13 @@ public class Students {
     @Transient
     @JsonProperty("age")
     private Integer age;
+
+    @Column(
+            name = "mobile_number",
+            nullable = false
+    )
+    @JsonProperty("phoneNumber")
+    private Integer mobileNumber;
     private String studentId;
 
     public String getStudentId() {
@@ -88,19 +91,9 @@ public class Students {
 
     @OneToMany(mappedBy = "students")
     private Set<Registration> registrations;
-    @JsonProperty("role type")
-    @Column(name = "roletype",
-            nullable = false
-    )
-    private RoleType roleType;
 
-    public RoleType getRoleType() {
-        return roleType;
-    }
 
-    public void setRoleType(RoleType roleType) {
-        this.roleType = roleType;
-    }
+
 
     public Students() {
     }
@@ -169,6 +162,15 @@ public class Students {
         this.age = age;
     }
 
+    public Integer getMobileNumber() {
+        return mobileNumber;
+    }
+
+    public void setMobileNumber(Integer mobileNumber) {
+        this.mobileNumber = mobileNumber;
+    }
+
+
     @Override
     public String toString() {
         return "Students{" +
@@ -180,9 +182,8 @@ public class Students {
                 ", gender=" + gender +
                 ", dob=" + dob +
                 ", age=" + age +
-                ", studentId='" + studentId + '\'' +
+                ", mobileNumber=" + mobileNumber +
                 ", registrations=" + registrations +
-                ", roleType=" + roleType +
                 '}';
     }
 
@@ -192,5 +193,13 @@ public class Students {
 
     public void setRegistrations(Set<Registration> registrations) {
         this.registrations = registrations;
+    }
+
+    public StudentType getStudentType() {
+        return studentType;
+    }
+
+    public void setStudentType(StudentType studentType) {
+        this.studentType = studentType;
     }
 }
