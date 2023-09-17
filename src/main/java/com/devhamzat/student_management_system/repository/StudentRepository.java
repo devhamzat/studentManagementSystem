@@ -1,6 +1,6 @@
 package com.devhamzat.student_management_system.repository;
 
-import com.devhamzat.student_management_system.entity.Students;
+import com.devhamzat.student_management_system.entity.Student;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -8,9 +8,10 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface StudentRepository extends JpaRepository<Students, Long> {
-    @Query("SELECT s FROM  Students s WHERE s.email =?1")
-    Optional<Students> findStudentsByEmail(String email);
+public interface StudentRepository extends JpaRepository<Student, String> {
+    @Query("SELECT s FROM  Student s WHERE s.email =?1")
+    Optional<Student> findStudentsByEmail(String email);
 
-    Optional<Students> findStudentsById(Long id);
+//    @Query("SELECT s FROM  Student s WHERE s.studentId = ?")
+//    Optional<Student> findStudentsById(String studentId);
 }
