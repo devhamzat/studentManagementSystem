@@ -23,7 +23,7 @@ public class FoundationalStudentRegistrationService implements StudentRegistrati
     }
 
     @Override
-    public ResponseEntity<String> register(Student student) {
+    public ResponseEntity<String> registerStudent(Student student) {
         //set the student type to dli
         student.setStudentType(StudentType.FOUNDATIONAL);
         //set the studentid field to the student generator  class
@@ -36,7 +36,7 @@ public class FoundationalStudentRegistrationService implements StudentRegistrati
         }
 
         studentRepository.save(student);
-        return ResponseEntity.ok("Student successfully registered into distance learning institute with id : " + studentID);
+        return ResponseEntity.ok("Student successfully registered into school of Foundation studies with id : " + studentID);
     }
 
 

@@ -5,7 +5,6 @@ import com.devhamzat.student_management_system.repository.StudentRepository;
 import com.devhamzat.student_management_system.service.studentService.serviceInterface.StudentRegistrationService;
 import com.devhamzat.student_management_system.utils.idGenerator.DLIStudentIDgenerator;
 import com.devhamzat.student_management_system.utils.StudentType;
-import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -26,7 +25,7 @@ public class DLIStudentRegistrationService implements StudentRegistrationService
     }
 
     @Override
-    public ResponseEntity<String> register(Student student) {
+    public ResponseEntity<String> registerStudent(Student student) {
         //set the student type to dli
         student.setStudentType(StudentType.DLI);
         //set the studentid field to the student generator  class
@@ -39,7 +38,7 @@ public class DLIStudentRegistrationService implements StudentRegistrationService
         }
 
         studentRepository.save(student);
-        return ResponseEntity.ok("Student successfully registered into distance learning institute with id : " + studentID);
+       return ResponseEntity.ok("Student successfully registered into distance learning institute with id : " + studentID);
     }
 
     @Override

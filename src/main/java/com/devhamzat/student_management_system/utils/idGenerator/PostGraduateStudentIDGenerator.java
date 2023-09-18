@@ -7,15 +7,13 @@ import org.springframework.stereotype.Component;
 
 public class PostGraduateStudentIDGenerator extends StudentIdGenerator {
 
-
+    private static final String PREFIX = "PG";
     public PostGraduateStudentIDGenerator(RedisTemplate<String, String> redisTemplate) {
         super(redisTemplate);
     }
 
-    public String generatePostgraduateID(boolean isUndergraduate) {
-        String PREFIX;
-        if (isUndergraduate) PREFIX = "UN";
-        else PREFIX = "PS";
+    public String generatePostgraduateID() {
+
         return generateStudentId(PREFIX);
     }
 }

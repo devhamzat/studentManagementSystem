@@ -10,6 +10,7 @@ import java.time.LocalDate;
 public  class StudentIdGenerator {
 
     @Autowired
+
    private  RedisTemplate<String, String> redisTemplate;
     public StudentIdGenerator(RedisTemplate<String,String> redisTemplate){
         this.redisTemplate=redisTemplate;

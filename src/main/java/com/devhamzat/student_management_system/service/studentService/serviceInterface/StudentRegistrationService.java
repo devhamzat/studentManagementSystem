@@ -7,7 +7,7 @@ import org.springframework.http.ResponseEntity;
 public interface StudentRegistrationService {
 
 
-    ResponseEntity<String> register(Student students);
+   ResponseEntity<String> registerStudent(Student students);
 
     StudentType getType();
 }

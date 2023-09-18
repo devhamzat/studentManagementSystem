@@ -23,7 +23,7 @@ public class UnderGraduateStudentRegistrationService implements StudentRegistrat
     }
 
     @Override
-    public ResponseEntity<String> register(Student students) {
+    public ResponseEntity<String> registerStudent(Student students) {
         String studentID = undergradauteStudentIDGenerator.generateUndergraduateStudentId();
         students.setStudentId(studentID);
         students.setStudentType(StudentType.UNDER_GRADUATE);
