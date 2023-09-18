@@ -1,27 +1,32 @@
 package com.devhamzat.student_management_system.controller;
 
-import com.devhamzat.student_management_system.entity.Students;
-import com.devhamzat.student_management_system.service.RegistrationService;
-import com.devhamzat.student_management_system.service.StudentRegistrationFactory;
-import com.devhamzat.student_management_system.service.StudentRegistrationService;
-import com.devhamzat.student_management_system.service.StudentService;
-import jakarta.transaction.Transactional;
+import com.devhamzat.student_management_system.entity.Student;
+import com.devhamzat.student_management_system.service.studentService.StudentRegistrationFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-@RequestMapping("/student")
+@RequestMapping("/api/student-management/student")
 public class StudentController {
 
-    @Autowired
-    private StudentService studentService;
+//    @Autowired
+//    private StudentService studentService;
 
     @Autowired
     private StudentRegistrationFactory studentRegistrationFactory;
+
+
+
+    @PostMapping(value = "/register")
+    public ResponseEntity<String> addStudents(@RequestBody Student student) {
+       ResponseEntity<String> responseEntity = studentRegistrationFactory.registerStudent(student);
+       return responseEntity;
+    }
 
 
 //    @Autowired
@@ -34,39 +39,35 @@ public class StudentController {
 //        return ResponseEntity.ok("student of " + studentId + " has succesfully registered to " + courseId);
 //    }
 
-    @PostMapping
-    public void addStudents(@RequestBody Students students) {
-        studentRegistrationFactory.registerStudent(students);
-    }
 
-    @GetMapping
-    public List<Students> getStudents() {
-        return studentService.getStudents();
-    }
-
-    @RequestMapping("/{studentId}")
-    public Students getStudentsById(@PathVariable("studentId") Long id) {
-        return studentService.getStudentsById(id);
-    }
-
-    @Transactional
-    @PutMapping("{studentId}")
-    public void updateStudent(@PathVariable("studentId") Long id,
-                              @RequestBody Students students,
-                              @RequestParam(required = false) String firstName,
-                              @RequestParam(required = false) String lastName,
-                              @RequestParam(required = false) String email
-    ) {
-        studentService.updateStudents(id, students);
-    }
-
-    @DeleteMapping(path = "/{studentId}")
-    public void deleteStudent(
-            @PathVariable("studentId") Long id) {
-        studentService.deleteStudent(id);
-    }
-//   @GetMapping("/MatricNo")
-//    public Students getId(){
-//       return String.valueOf(studentIDGenerator);
-//   }
+//    @GetMapping
+//    public List<Student> getStudents() {
+//        return studentService.getStudents();
+//    }
+//
+//    @RequestMapping("/{studentId}")
+//    public Student getStudentsById(@PathVariable("studentId") Long id) {
+//        return studentService.getStudentsById(id);
+//    }
+//
+//    @Transactional
+//    @PutMapping("{studentId}")
+//    public void updateStudent(@PathVariable("studentId") Long id,
+//                              @RequestBody Student students,
+//                              @RequestParam(required = false) String firstName,
+//                              @RequestParam(required = false) String lastName,
+//                              @RequestParam(required = false) String email
+//    ) {
+//        studentService.updateStudents(id, students);
+//    }
+//
+//    @DeleteMapping(path = "/{studentId}")
+//    public void deleteStudent(
+//            @PathVariable("studentId") Long id) {
+//        studentService.deleteStudent(id);
+//    }
+////   @GetMapping("/MatricNo")
+////    public Students getId(){
+////       return String.valueOf(studentIDGenerator);
+////   }
 }

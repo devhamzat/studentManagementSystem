@@ -17,7 +17,7 @@ import java.util.Set;
                 @UniqueConstraint(name = "student_email_unique", columnNames = "email")
         }
 )
-public class Students {
+public class Student {
 
     @Id
     @SequenceGenerator(name = "student_id_sequence",
@@ -61,7 +61,7 @@ public class Students {
     )
     @JsonProperty("sex")
     private Gender gender;
-    private StudentType studentType ;
+    private StudentType studentType;
 
 
     @Column(name = "date of birth",
@@ -73,12 +73,6 @@ public class Students {
     @JsonProperty("age")
     private Integer age;
 
-    @Column(
-            name = "mobile_number",
-            nullable = false
-    )
-    @JsonProperty("phoneNumber")
-    private Integer mobileNumber;
     private String studentId;
 
     public String getStudentId() {
@@ -93,9 +87,7 @@ public class Students {
     private Set<Registration> registrations;
 
 
-
-
-    public Students() {
+    public Student() {
     }
 
     public Long getId() {
@@ -162,14 +154,6 @@ public class Students {
         this.age = age;
     }
 
-    public Integer getMobileNumber() {
-        return mobileNumber;
-    }
-
-    public void setMobileNumber(Integer mobileNumber) {
-        this.mobileNumber = mobileNumber;
-    }
-
 
     @Override
     public String toString() {
@@ -182,7 +166,6 @@ public class Students {
                 ", gender=" + gender +
                 ", dob=" + dob +
                 ", age=" + age +
-                ", mobileNumber=" + mobileNumber +
                 ", registrations=" + registrations +
                 '}';
     }
