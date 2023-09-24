@@ -3,8 +3,8 @@ package com.devhamzat.student_management_system.service.studentService.dli;
 import com.devhamzat.student_management_system.entity.Student;
 import com.devhamzat.student_management_system.repository.StudentRepository;
 import com.devhamzat.student_management_system.service.studentService.serviceInterface.StudentRegistrationService;
-import com.devhamzat.student_management_system.utils.idGenerator.DLIStudentIDgenerator;
 import com.devhamzat.student_management_system.utils.StudentType;
+import com.devhamzat.student_management_system.utils.idGenerator.DLIStudentIDgenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -19,7 +19,7 @@ public class DLIStudentRegistrationService implements StudentRegistrationService
     private DLIStudentIDgenerator dliStudentIDgenerator;
 
 
-   public DLIStudentRegistrationService(StudentRepository studentRepository, DLIStudentIDgenerator dliStudentIDgenerator) {
+    public DLIStudentRegistrationService(StudentRepository studentRepository, DLIStudentIDgenerator dliStudentIDgenerator) {
         this.studentRepository = studentRepository;
         this.dliStudentIDgenerator = dliStudentIDgenerator;
     }
@@ -38,7 +38,7 @@ public class DLIStudentRegistrationService implements StudentRegistrationService
         }
 
         studentRepository.save(student);
-       return ResponseEntity.ok("Student successfully registered into distance learning institute with id : " + studentID);
+        return ResponseEntity.ok("Student successfully registered into distance learning institute with id : " + studentID);
     }
 
     @Override

@@ -3,8 +3,8 @@ package com.devhamzat.student_management_system.service.studentService.serviceIn
 import com.devhamzat.student_management_system.entity.Student;
 
 
-public interface StudentRetrivalService {
-   Student retriveStudentByStudentId(Student student);
-    void retriveStudentByEmail();
+public interface StudentRetrievalService {
+   Student retrieveStudentByStudentId(Student student);
+    void retrieveStudentByEmail();
 
 }

@@ -4,6 +4,8 @@ import com.devhamzat.student_management_system.utils.Gender;
 import com.devhamzat.student_management_system.utils.StudentType;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 import java.time.LocalDate;
 import java.time.Period;
@@ -61,6 +63,11 @@ public class Student {
     )
     @JsonProperty("sex")
     private Gender gender;
+
+    @Column(name = "Student_type",
+            nullable = false
+    )
+    @NotBlank
     private StudentType studentType;
 
 
@@ -69,11 +76,42 @@ public class Student {
     )
     @JsonProperty("Date of birth")
     private LocalDate dob;
+
+    public Student(String firstName,
+                   String lastName,
+                   String email,
+                   String address,
+                   Gender gender,
+                   StudentType studentType,
+                   LocalDate dob
+    ) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.address = address;
+        this.gender = gender;
+        this.studentType = studentType;
+        this.dob = dob;
+        this.age = age;
+        this.studentId = studentId;
+        this.registrations = registrations;
+    }
+
     @Transient
     @JsonProperty("age")
     private Integer age;
 
     private String studentId;
+
+
+    @OneToMany(mappedBy = "students")
+    private Set<Registration> registrations;
+
+
+    public Student() {
+    }
+
 
     public String getStudentId() {
         return studentId;
@@ -81,13 +119,6 @@ public class Student {
 
     public void setStudentId(String studentId) {
         this.studentId = studentId;
-    }
-
-    @OneToMany(mappedBy = "students")
-    private Set<Registration> registrations;
-
-
-    public Student() {
     }
 
     public Long getId() {
@@ -154,6 +185,22 @@ public class Student {
         this.age = age;
     }
 
+    public Set<Registration> getRegistrations() {
+        return registrations;
+    }
+
+    public void setRegistrations(Set<Registration> registrations) {
+        this.registrations = registrations;
+    }
+
+    public StudentType getStudentType() {
+        return studentType;
+    }
+
+    public void setStudentType(StudentType studentType) {
+        this.studentType = studentType;
+    }
+
 
     @Override
     public String toString() {
@@ -170,19 +217,5 @@ public class Student {
                 '}';
     }
 
-    public Set<Registration> getRegistrations() {
-        return registrations;
-    }
 
-    public void setRegistrations(Set<Registration> registrations) {
-        this.registrations = registrations;
-    }
-
-    public StudentType getStudentType() {
-        return studentType;
-    }
-
-    public void setStudentType(StudentType studentType) {
-        this.studentType = studentType;
-    }
 }

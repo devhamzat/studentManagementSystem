@@ -1,19 +1,17 @@
 package com.devhamzat.student_management_system.utils.idGenerator;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 
 @Service
-public  class StudentIdGenerator {
+public class StudentIdGenerator {
 
-    @Autowired
+    private RedisTemplate<String, String> redisTemplate;
 
-   private  RedisTemplate<String, String> redisTemplate;
-    public StudentIdGenerator(RedisTemplate<String,String> redisTemplate){
-        this.redisTemplate=redisTemplate;
+    public StudentIdGenerator(RedisTemplate<String, String> redisTemplate) {
+        this.redisTemplate = redisTemplate;
     }
 
     public String generateStudentId(String prefix) {
