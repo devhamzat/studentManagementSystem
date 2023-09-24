@@ -4,7 +4,7 @@ import com.devhamzat.student_management_system.entity.Student;
 
 
 public interface StudentRetrivalService {
-   Student retriveStudentByStudentId(Student student);
-    void retriveStudentByEmail();
+   Student retrieveStudentByStudentId(Student student);
+    void retrieveStudentByEmail();
 
 }
