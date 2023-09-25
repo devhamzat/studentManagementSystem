@@ -67,7 +67,7 @@ public class Student {
     @Column(name = "Student_type",
             nullable = false
     )
-    @NotBlank
+
     private StudentType studentType;
 
 

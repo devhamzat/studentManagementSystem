@@ -33,8 +33,9 @@ class DLIStudentRegistrationServiceTest {
         Student student = new Student();
         student.setEmail("chrisdaniel@gmail.com");
         student.setStudentType(StudentType.DLI);
+        student.setStudentId("DLI20230001");
 
-        when(dliStudentIDgenerator.generateDLIStudentId()).thenReturn("Dli20230001");
+        when(dliStudentIDgenerator.generateDLIStudentId()).thenReturn(student.getStudentId());
         when(studentRepository.findStudentsByEmail("chrisdaniel@gmail.com")).thenReturn(Optional.empty());
 
         // When
@@ -42,7 +43,7 @@ class DLIStudentRegistrationServiceTest {
 
         // Then
         assertThat(responseMessage.getStatusCode()).isEqualTo(HttpStatus.OK);
-        assertThat(responseMessage.getBody()).isEqualTo("Student successfully registered into distance learning institute with id : Dli20230001");
+        assertThat(responseMessage.getBody()).isEqualTo("Student successfully registered into distance learning institute with id : " + student.getStudentId());
     }
 
     @Test
