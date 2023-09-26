@@ -1,4 +1,4 @@
-package com.devhamzat.student_management_system.service.studentService;
+package com.devhamzat.student_management_system.service.studentService.factory;
 
 import com.devhamzat.student_management_system.entity.Student;
 import com.devhamzat.student_management_system.service.studentService.serviceInterface.StudentRegistrationService;
