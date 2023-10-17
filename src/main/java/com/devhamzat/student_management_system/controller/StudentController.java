@@ -7,10 +7,7 @@ import com.devhamzat.student_management_system.service.studentService.factory.St
 import com.devhamzat.student_management_system.service.studentService.factory.StudentRetrievalFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
 @RestController
@@ -32,9 +29,14 @@ public class StudentController {
 
 
     @PostMapping("/retrieve")
-    public ResponseEntity<StudentDTO> retrieveStudentById(@RequestBody StudentRequestDTO request) {
-
+    public StudentDTO retrieveStudentById(@RequestBody StudentRequestDTO request) {
         StudentDTO studentDTO = studentRetrievalFactory.retrieveStudentByStudentId(String.valueOf(request.getStudentType()), request.getStudentId());
-        return ResponseEntity.ok(studentDTO);
+        return studentDTO;
+    }
+
+    @GetMapping(value = "/fetch")
+    public ResponseEntity<String> returnString(){
+        String string = new String("hello");
+        return  ResponseEntity.ok(string);
     }
 }

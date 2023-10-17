@@ -8,7 +8,7 @@ import com.devhamzat.student_management_system.utils.StudentType;
 import java.time.LocalDate;
 import java.util.Set;
 
-public class StudentDTO {
+public class StudentDTO  {
     private String firstName;
     private String lastName;
     private String email;

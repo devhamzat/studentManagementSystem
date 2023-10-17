@@ -18,11 +18,23 @@ public class StudentRetrievalFactory {
     }
 
     public StudentDTO retrieveStudentByStudentId(String studentType, String studentId) {
+        StudentDTO retrievalResponse = null;
         for (StudentRetrievalService retrievalService : retrievalServices) {
             if (retrievalService.studentType(StudentType.valueOf(studentType))) {
-                return retrievalService.retrieveStudentByStudentId(studentId);
+                retrievalResponse=  retrievalService.retrieveStudentByStudentId(studentId);
+//                return retrievalService.retrieveStudentByStudentId(studentId);
             }
+            return retrievalResponse;
         }
         throw new IllegalArgumentException("Unsupported student type: " + studentType);
     }
 }
+//    public ResponseEntity<String> registerStudent(Student students) {
+//        ResponseEntity<String> registrationResponse = null;
+//        for (StudentRegistrationService registrationService : studentRegistrationServices) {
+//            if (registrationService.getType() == students.getStudentType()) {
+//                registrationResponse = registrationService.registerStudent(students);
+//            }
+//        }
+//        return registrationResponse;
+//    }
