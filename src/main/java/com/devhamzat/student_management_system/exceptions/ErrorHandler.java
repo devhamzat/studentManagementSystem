@@ -31,5 +31,13 @@ public class ErrorHandler extends ResponseEntityExceptionHandler {
         error.setDetails("try checking your mail again to confirm your student id");
         return new ResponseEntity<>(error, HttpStatus.UNPROCESSABLE_ENTITY);
     }
+    @ExceptionHandler(CourseAlreadyExist.class)
+    public ResponseEntity<ApplicationError>handlecourseAlreadyExist(CourseAlreadyExist exception){
+        ApplicationError error = new ApplicationError();
+        error.setCode(409);
+        error.setMessage(exception.getMessage());
+        error.setDetails("This course input ' already exists");
+        return new ResponseEntity<>(error,HttpStatus.BAD_REQUEST);
+    }
 
 }
