@@ -1,4 +1,4 @@
-package com.devhamzat.student_management_system.service.courseService.foundationalCourse;
+package com.devhamzat.student_management_system.service.courseService.dliCourse;
 
 import com.devhamzat.student_management_system.entity.Course;
 import com.devhamzat.student_management_system.exceptions.CourseAlreadyExist;
@@ -12,10 +12,9 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 @Service
-public class FoundationalCourseService implements CoursePopulatingService {
+public class DLICourseService implements CoursePopulatingService {
     @Autowired
     private CourseRepository courseRepository;
-
 
     @Override
     public ResponseEntity<String> populateCourse(Course course) {
@@ -29,6 +28,6 @@ public class FoundationalCourseService implements CoursePopulatingService {
 
     @Override
     public CourseType getType() {
-        return CourseType.FOUNDATIONAL_COURSE;
+        return CourseType.DLI_COURSE;
     }
 }

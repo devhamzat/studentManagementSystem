@@ -36,8 +36,16 @@ public class ErrorHandler extends ResponseEntityExceptionHandler {
         ApplicationError error = new ApplicationError();
         error.setCode(409);
         error.setMessage(exception.getMessage());
-        error.setDetails("This course input ' already exists");
+        error.setDetails("Try changing the course code or course name because the current input exist");
         return new ResponseEntity<>(error,HttpStatus.BAD_REQUEST);
+    }
+    @ExceptionHandler(CourseDoesNotExist.class)
+    public  ResponseEntity<ApplicationError> handleCourseDoesNotExist(CourseDoesNotExist exception){
+        ApplicationError error = new ApplicationError();
+        error.setCode(404);
+        error.setMessage(exception.getMessage());
+        error.setDetails("change the course code or name you entered");
+        return  new ResponseEntity<>(error,HttpStatus.BAD_REQUEST);
     }
 
 }

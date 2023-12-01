@@ -1,4 +1,4 @@
-package com.devhamzat.student_management_system.service.courseService.foundationalCourse;
+package com.devhamzat.student_management_system.service.courseService.undergraduateCourse;
 
 import com.devhamzat.student_management_system.entity.Course;
 import com.devhamzat.student_management_system.exceptions.CourseAlreadyExist;
@@ -10,13 +10,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
-
 @Service
-public class FoundationalCourseService implements CoursePopulatingService {
+public class UndergraduateCourseService implements CoursePopulatingService {
     @Autowired
     private CourseRepository courseRepository;
-
-
     @Override
     public ResponseEntity<String> populateCourse(Course course) {
         Optional<Course> courseOptional = courseRepository.findStudentsByCourseNameOrCourseCode(course.getCourseName(), course.getCourseCode());
@@ -29,6 +26,6 @@ public class FoundationalCourseService implements CoursePopulatingService {
 
     @Override
     public CourseType getType() {
-        return CourseType.FOUNDATIONAL_COURSE;
+        return CourseType.UNDER_GRADUATE_COURSE;
     }
 }
