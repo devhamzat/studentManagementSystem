@@ -1,4 +1,4 @@
-package com.devhamzat.student_management_system.dto;
+package com.devhamzat.student_management_system.dto.studentdto;
 
 import com.devhamzat.student_management_system.entity.Registration;
 import com.devhamzat.student_management_system.entity.Student;
@@ -23,57 +23,33 @@ public class StudentDTO {
 
     private Set<Registration> registrations;
 
-    public String getFirstName() {
-        return firstName;
-    }
 
     public void setFirstName(Student student) {
         this.firstName = student.getFirstName();
     }
 
-    public String getLastName() {
-        return lastName;
-    }
 
     public void setLastName(Student student) {
         this.lastName = student.getLastName();
-    }
-
-    public String getEmail() {
-        return email;
     }
 
     public void setEmail(Student student) {
         this.email = student.getEmail();
     }
 
-    public Gender getGender() {
-        return gender;
-    }
 
     public void setGender(Student student) {
         this.gender = student.getGender();
-    }
-
-    public StudentType getStudentType() {
-        return studentType;
     }
 
     public void setStudentType(Student student) {
         this.studentType = student.getStudentType();
     }
 
-    public LocalDate getDob() {
-        return dob;
-    }
-
     public void setDob(Student student) {
         this.dob = student.getDob();
     }
 
-    public Integer getAge() {
-        return age;
-    }
 
     public void setAge(Student student) {
         this.age = student.getAge();
@@ -87,9 +63,6 @@ public class StudentDTO {
         this.studentId = student.getStudentId();
     }
 
-    public Set<Registration> getRegistrations() {
-        return registrations;
-    }
 
     public void setRegistrations(Student student) {
         this.registrations = student.getRegistrations();
@@ -108,7 +81,6 @@ public class StudentDTO {
                 ", registrations=" + registrations +
                 '}';
     }
-
 
 
 }

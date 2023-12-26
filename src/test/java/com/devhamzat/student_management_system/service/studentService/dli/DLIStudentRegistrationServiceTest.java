@@ -3,7 +3,7 @@ package com.devhamzat.student_management_system.service.studentService.dli;
 import com.devhamzat.student_management_system.entity.Student;
 import com.devhamzat.student_management_system.repository.StudentRepository;
 import com.devhamzat.student_management_system.utils.StudentType;
-import com.devhamzat.student_management_system.utils.idGenerator.DLIStudentIDgenerator;
+import com.devhamzat.student_management_system.utils.idGenerator.studentIDGenereator.DLIStudentIDgenerator;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;

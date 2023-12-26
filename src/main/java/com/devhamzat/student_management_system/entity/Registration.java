@@ -12,12 +12,12 @@ public class Registration {
 
     @JsonProperty("studentId")
     @ManyToOne
-            @JoinColumn(name = "student_id",referencedColumnName = "id")
+    @JoinColumn(name = "student_id", referencedColumnName = "id")
     Student students;
 
     @JsonProperty("courseId")
     @ManyToOne
-            @JoinColumn(name = "course_id",referencedColumnName = "id")
+    @JoinColumn(name = "course_id", referencedColumnName = "id")
     Course courses;
 
     private LocalDate timeRegistered;

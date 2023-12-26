@@ -1,4 +1,4 @@
-package com.devhamzat.student_management_system.dto;
+package com.devhamzat.student_management_system.dto.studentdto;
 
 import com.devhamzat.student_management_system.entity.Student;
 import com.devhamzat.student_management_system.repository.StudentRepository;
@@ -12,19 +12,23 @@ public class StudentDTOService {
 
     @Autowired
     private StudentRepository studentRepository;
+
     public StudentDTO mapStudentToDTO(String studentId) {
         Optional<Student> optionalStudent = studentRepository.findStudentsById(studentId);
-        Student student= optionalStudent.get();
-        StudentDTO studentDTO = new StudentDTO();
-        studentDTO.setFirstName(student);
-        studentDTO.setLastName(student);
-        studentDTO.setEmail(student);
-        studentDTO.setGender(student);
-        studentDTO.setStudentType(student);
-        studentDTO.setDob(student);
-        studentDTO.setAge(student);
-        studentDTO.setStudentId(student);
-        studentDTO.setRegistrations(student);
-        return studentDTO;
+        if (optionalStudent.isPresent()) {
+            Student student = optionalStudent.get();
+            StudentDTO studentDTO = new StudentDTO();
+            studentDTO.setFirstName(student);
+            studentDTO.setLastName(student);
+            studentDTO.setEmail(student);
+            studentDTO.setGender(student);
+            studentDTO.setStudentType(student);
+            studentDTO.setDob(student);
+            studentDTO.setAge(student);
+            studentDTO.setStudentId(student);
+            studentDTO.setRegistrations(student);
+            return studentDTO;
+        }
+        return null;
     }
 }
