@@ -1,4 +1,4 @@
-package com.devhamzat.student_management_system.dto;
+package com.devhamzat.student_management_system.dto.studentdto;
 
 import com.devhamzat.student_management_system.utils.StudentType;
 

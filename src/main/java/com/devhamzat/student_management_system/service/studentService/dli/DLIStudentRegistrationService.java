@@ -4,7 +4,7 @@ import com.devhamzat.student_management_system.entity.Student;
 import com.devhamzat.student_management_system.repository.StudentRepository;
 import com.devhamzat.student_management_system.service.studentService.serviceInterface.StudentRegistrationService;
 import com.devhamzat.student_management_system.utils.StudentType;
-import com.devhamzat.student_management_system.utils.idGenerator.DLIStudentIDgenerator;
+import com.devhamzat.student_management_system.utils.idGenerator.studentIDGenereator.DLIStudentIDgenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;

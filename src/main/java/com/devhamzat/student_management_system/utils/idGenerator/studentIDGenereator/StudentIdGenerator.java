@@ -1,4 +1,4 @@
-package com.devhamzat.student_management_system.utils.idGenerator;
+package com.devhamzat.student_management_system.utils.idGenerator.studentIDGenereator;
 
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;

@@ -99,7 +99,7 @@ public class Student {
     @Transient
     @JsonProperty("age")
     private Integer age;
-
+    @JsonProperty("student id")
     private String studentId;
 
 
