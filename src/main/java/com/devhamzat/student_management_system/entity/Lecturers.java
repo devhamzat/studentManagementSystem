@@ -50,7 +50,7 @@ public class Lecturers {
 
     @OneToOne(mappedBy = "lecturer")
     @JoinColumn(name = "course_id", referencedColumnName = "id")
-    private Course course;
+    private Courses course;
 
     public Long getId() {
         return id;
@@ -108,11 +108,11 @@ public class Lecturers {
         this.roleType = roleType;
     }
 
-    public Course getCourse() {
+    public Courses getCourse() {
         return course;
     }
 
-    public void setCourse(Course course) {
+    public void setCourse(Courses course) {
         this.course = course;
     }
 

@@ -12,19 +12,19 @@ public class Registration {
 
     @JsonProperty("studentId")
     @ManyToOne
-    @JoinColumn(name = "student_id", referencedColumnName = "id")
+            @JoinColumn(name = "student_id",referencedColumnName = "id")
     Student students;
 
     @JsonProperty("courseId")
     @ManyToOne
-    @JoinColumn(name = "course_id", referencedColumnName = "id")
-    Course courses;
+            @JoinColumn(name = "course_id",referencedColumnName = "id")
+    Courses courses;
 
     private LocalDate timeRegistered;
 
     private Integer grade;
 
-    public Registration(Long id, Student students, Course courses, LocalDate timeRegistered, Integer grade) {
+    public Registration(Long id, Student students, Courses courses, LocalDate timeRegistered, Integer grade) {
         this.id = id;
         this.students = students;
         this.courses = courses;
@@ -51,11 +51,11 @@ public class Registration {
         this.students = students;
     }
 
-    public Course getCourses() {
+    public Courses getCourses() {
         return courses;
     }
 
-    public void setCourses(Course courses) {
+    public void setCourses(Courses courses) {
         this.courses = courses;
     }
 

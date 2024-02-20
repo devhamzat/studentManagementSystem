@@ -1,6 +1,6 @@
 package com.devhamzat.student_management_system.service.studentService.factory;
 
-import com.devhamzat.student_management_system.dto.studentdto.StudentDTO;
+import com.devhamzat.student_management_system.dto.StudentDTO;
 import com.devhamzat.student_management_system.service.studentService.serviceInterface.StudentRetrievalService;
 import com.devhamzat.student_management_system.utils.StudentType;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,7 +1,7 @@
 package com.devhamzat.student_management_system.controller;
 
-import com.devhamzat.student_management_system.dto.studentdto.StudentDTO;
-import com.devhamzat.student_management_system.dto.studentdto.StudentRequestDTO;
+import com.devhamzat.student_management_system.dto.StudentDTO;
+import com.devhamzat.student_management_system.dto.StudentRequestDTO;
 import com.devhamzat.student_management_system.entity.Student;
 import com.devhamzat.student_management_system.service.studentService.factory.StudentRegistrationFactory;
 import com.devhamzat.student_management_system.service.studentService.factory.StudentRetrievalFactory;
