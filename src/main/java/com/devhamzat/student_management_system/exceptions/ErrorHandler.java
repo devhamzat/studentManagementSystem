@@ -31,21 +31,5 @@ public class ErrorHandler extends ResponseEntityExceptionHandler {
         error.setDetails("try checking your mail again to confirm your student id");
         return new ResponseEntity<>(error, HttpStatus.UNPROCESSABLE_ENTITY);
     }
-    @ExceptionHandler(CourseAlreadyExist.class)
-    public ResponseEntity<ApplicationError>handlecourseAlreadyExist(CourseAlreadyExist exception){
-        ApplicationError error = new ApplicationError();
-        error.setCode(409);
-        error.setMessage(exception.getMessage());
-        error.setDetails("Try changing the course code or course name because the current input exist");
-        return new ResponseEntity<>(error,HttpStatus.BAD_REQUEST);
-    }
-    @ExceptionHandler(CourseDoesNotExist.class)
-    public  ResponseEntity<ApplicationError> handleCourseDoesNotExist(CourseDoesNotExist exception){
-        ApplicationError error = new ApplicationError();
-        error.setCode(404);
-        error.setMessage(exception.getMessage());
-        error.setDetails("change the course code or name you entered");
-        return  new ResponseEntity<>(error,HttpStatus.BAD_REQUEST);
-    }
 
 }

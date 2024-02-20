@@ -1,13 +1,13 @@
 package com.devhamzat.student_management_system.service.studentService.undergraduate;
 
-import com.devhamzat.student_management_system.dto.studentdto.StudentDTO;
-import com.devhamzat.student_management_system.dto.studentdto.StudentDTOService;
+import com.devhamzat.student_management_system.dto.StudentDTO;
+import com.devhamzat.student_management_system.dto.StudentDTOService;
 import com.devhamzat.student_management_system.entity.Student;
 import com.devhamzat.student_management_system.exceptions.StudentIDInvalid;
 import com.devhamzat.student_management_system.repository.StudentRepository;
 import com.devhamzat.student_management_system.service.studentService.serviceInterface.StudentRetrievalService;
 import com.devhamzat.student_management_system.utils.StudentType;
-import com.devhamzat.student_management_system.utils.idGenerator.studentIDGenereator.UndergradauteStudentIDGenerator;
+import com.devhamzat.student_management_system.utils.idGenerator.UndergradauteStudentIDGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
