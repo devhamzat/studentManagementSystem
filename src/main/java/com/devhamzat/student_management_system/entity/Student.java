@@ -4,6 +4,8 @@ import com.devhamzat.student_management_system.utils.Gender;
 import com.devhamzat.student_management_system.utils.StudentType;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDate;
 import java.time.Period;
@@ -17,6 +19,8 @@ import java.util.Set;
                 @UniqueConstraint(name = "student_email_unique", columnNames = "email")
         }
 )
+@Getter
+@Setter
 public class Student {
 
     @Id

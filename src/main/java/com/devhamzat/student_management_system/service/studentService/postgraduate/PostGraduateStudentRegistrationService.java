@@ -26,12 +26,13 @@ public class PostGraduateStudentRegistrationService implements StudentRegistrati
     @Override
     public ResponseEntity<String> registerStudent(Student student) {
         student.setStudentType(StudentType.POST_GRADUATE);
-        String studentID = postGraduateStudentIDGenerator.generatePostgraduateID();
-        student.setStudentId(studentID);
+
         Optional<Student> studentOptional = studentRepository.findStudentsByEmail(student.getEmail());
         if (studentOptional.isPresent()) {
             throw new IllegalStateException("email taken");
         }
+        String studentID = postGraduateStudentIDGenerator.generatePostgraduateID();
+        student.setStudentId(studentID);
         studentRepository.save(student);
         return ResponseEntity.ok("Student successfully registered into School of Postgraduate studies : " + studentID);
     }
