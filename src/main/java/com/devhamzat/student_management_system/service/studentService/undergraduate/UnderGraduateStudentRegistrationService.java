@@ -17,20 +17,21 @@ public class UnderGraduateStudentRegistrationService implements StudentRegistrat
     private StudentRepository studentRepository;
 
     private UndergradauteStudentIDGenerator undergradauteStudentIDGenerator;
-    public UnderGraduateStudentRegistrationService(UndergradauteStudentIDGenerator undergradauteStudentIDGenerator,StudentRepository studentRepository){
+
+    public UnderGraduateStudentRegistrationService(UndergradauteStudentIDGenerator undergradauteStudentIDGenerator, StudentRepository studentRepository) {
         this.undergradauteStudentIDGenerator = undergradauteStudentIDGenerator;
         this.studentRepository = studentRepository;
     }
 
     @Override
     public ResponseEntity<String> registerStudent(Student students) {
-        String studentID = undergradauteStudentIDGenerator.generateUndergraduateStudentId();
-        students.setStudentId(studentID);
         students.setStudentType(StudentType.UNDER_GRADUATE);
         Optional<Student> studentOptional = studentRepository.findStudentsByEmail(students.getEmail());
         if (studentOptional.isPresent()) {
             throw new IllegalStateException("Email is already taken");
         }
+        String studentID = undergradauteStudentIDGenerator.generateUndergraduateStudentId();
+        students.setStudentId(studentID);
         studentRepository.save(students);
         return ResponseEntity.ok("Student registered successfully with Id:" + studentID);
     }

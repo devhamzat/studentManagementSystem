@@ -4,6 +4,8 @@ import com.devhamzat.student_management_system.utils.Gender;
 import com.devhamzat.student_management_system.utils.StudentType;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDate;
 import java.time.Period;
@@ -17,6 +19,8 @@ import java.util.Set;
                 @UniqueConstraint(name = "student_email_unique", columnNames = "email")
         }
 )
+@Getter
+@Setter
 public class Student {
 
     @Id
@@ -108,95 +112,6 @@ public class Student {
 
 
     public Student() {
-    }
-
-
-    public String getStudentId() {
-        return studentId;
-    }
-
-    public void setStudentId(String studentId) {
-        this.studentId = studentId;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public Gender getGender() {
-        return gender;
-    }
-
-    public void setGender(Gender gender) {
-        this.gender = gender;
-    }
-
-    public LocalDate getDob() {
-        return dob;
-    }
-
-    public void setDob(LocalDate dob) {
-        this.dob = dob;
-    }
-
-    public Integer getAge() {
-        return Period.between(this.dob, LocalDate.now()).getYears();
-    }
-
-    public void setAge(Integer age) {
-        this.age = age;
-    }
-
-    public Set<Registration> getRegistrations() {
-        return registrations;
-    }
-
-    public void setRegistrations(Set<Registration> registrations) {
-        this.registrations = registrations;
-    }
-
-    public StudentType getStudentType() {
-        return studentType;
-    }
-
-    public void setStudentType(StudentType studentType) {
-        this.studentType = studentType;
     }
 
 

@@ -28,15 +28,16 @@ public class DLIStudentRegistrationService implements StudentRegistrationService
     public ResponseEntity<String> registerStudent(Student student) {
         //set the student type to dli
         student.setStudentType(StudentType.DLI);
-        //set the studentid field to the student generator  class
-        String studentID = dliStudentIDgenerator.generateDLIStudentId();
-        student.setStudentId(studentID);
+
+
         //check if email exists
         Optional<Student> studentOptional = studentRepository.findStudentsByEmail(student.getEmail());
         if (studentOptional.isPresent()) {
             throw new IllegalStateException("Email is already taken");
         }
-
+        //set the studentid field to the student generator  class
+        String studentID = dliStudentIDgenerator.generateDLIStudentId();
+        student.setStudentId(studentID);
         studentRepository.save(student);
         return ResponseEntity.ok("Student successfully registered into distance learning institute with id : " + studentID);
     }
