@@ -4,26 +4,21 @@ import com.devhamzat.student_management_system.utils.Gender;
 import com.devhamzat.student_management_system.utils.StudentType;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
 
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.Set;
 
 
-@Entity
-@Table(
-        name = "students",
-        uniqueConstraints = {
-                @UniqueConstraint(name = "student_email_unique", columnNames = "email")
-        }
-)
-@Getter
-@Setter
+//@Table(
+//        name = "students",
+//        uniqueConstraints = {
+//                @UniqueConstraint(name = "student_email_unique", columnNames = "email")
+//        }
+//)
 public class Student {
 
-    @Id
+
     @SequenceGenerator(name = "student_id_sequence",
             sequenceName = "student_id_sequence",
             allocationSize = 1
@@ -103,7 +98,7 @@ public class Student {
     @Transient
     @JsonProperty("age")
     private Integer age;
-    @JsonProperty("student id")
+
     private String studentId;
 
 

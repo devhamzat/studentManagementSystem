@@ -8,7 +8,7 @@ import lombok.Setter;
 
 import java.util.Set;
 
-@Entity
+//@Entity
 @Getter
 @Setter
 public class Course {
