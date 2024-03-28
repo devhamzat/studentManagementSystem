@@ -1,5 +1,6 @@
 package org.devhamzat.enrollment.service.factory;
 
+import org.devhamzat.enrollment.entity.Address;
 import org.devhamzat.enrollment.entity.Candidate;
 import org.devhamzat.enrollment.entity.CandidateApplication;
 import org.devhamzat.enrollment.service.serviceInterface.CandidateEnrollmentService;
@@ -14,12 +15,12 @@ public class CandidateEnrollmentFactory {
     @Autowired
     private List<CandidateEnrollmentService> candidateEnrollmentServices;
 
-     public ResponseEntity<String> enrollStudent(Candidate candidate) {
+
+    public ResponseEntity<String> enrollStudent(Candidate candidate, CandidateApplication candidateApplication, Address address) {
         ResponseEntity<String> enrollmentResponse = null;
         for (CandidateEnrollmentService enrollmentService : candidateEnrollmentServices) {
-
-            if (enrollmentService.getType()== candidate.getCandidateApplication().getEnrollmentType() ) {
-               enrollmentResponse = enrollmentService.enrollStudent(candidate);
+            if (enrollmentService.getType()== candidateApplication.getEnrollmentType() ) {
+                enrollmentResponse = enrollmentService.enrollStudent(candidate,candidateApplication,address);
             }
         }
         return enrollmentResponse;

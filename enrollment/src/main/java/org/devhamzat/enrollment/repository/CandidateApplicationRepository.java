@@ -7,8 +7,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
+
 @Repository
-public interface CandidateApplicationRepository extends JpaRepository<CandidateApplication,String> {
-    Optional<CandidateApplication> findCandidateApplicationByApplicationNumber(String applicationNumber);
-    Optional<CandidateApplication> findCandidateApplicationsByEnrollmentTypeAndEnrollmentStatus(EnrollmentType enrollmentType, EnrollmentStatus status);
+public interface CandidateApplicationRepository extends JpaRepository<CandidateApplication, String> {
+//    Optional<CandidateApplication> findCandidateApplicationByApplicationNumber(String applicationNumber);
+
+    Optional<CandidateApplication> findCandidateApplicationsByEnrollmentType(EnrollmentType enrollmentType);
 }

@@ -1,6 +1,8 @@
 package org.devhamzat.enrollment.controller;
 
+import org.devhamzat.enrollment.entity.Address;
 import org.devhamzat.enrollment.entity.Candidate;
+import org.devhamzat.enrollment.entity.CandidateApplication;
 import org.devhamzat.enrollment.service.factory.CandidateEnrollmentFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -16,8 +18,8 @@ public class CandidateController {
     private CandidateEnrollmentFactory candidateEnrollmentFactory;
 
     @PostMapping(value = "/enroll")
-    public ResponseEntity<String> enroll( @RequestBody Candidate candidate) {
-        ResponseEntity<String> responseEntity = candidateEnrollmentFactory.enrollStudent(candidate);
+    public ResponseEntity<String> enroll(@RequestBody Candidate candidate, CandidateApplication candidateApplication, Address address) {
+        ResponseEntity<String> responseEntity = candidateEnrollmentFactory.enrollStudent(candidate, candidateApplication, address);
         return responseEntity;
     }
 }

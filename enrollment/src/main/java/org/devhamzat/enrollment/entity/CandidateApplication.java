@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.devhamzat.enrollment.utils.EnrollmentStatus;
 import org.devhamzat.enrollment.utils.EnrollmentType;
+
 @Entity
 @Table(name = "Application")
 @Getter
@@ -16,14 +17,19 @@ import org.devhamzat.enrollment.utils.EnrollmentType;
 @AllArgsConstructor
 public class CandidateApplication {
     @Id
-    @SequenceGenerator(name = "candidate_application_id_sequence", sequenceName = "candidate_application_id_sequence", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "candidate_application_id_sequence")
+    @SequenceGenerator(name = "candidate_application_id_sequence",
+            sequenceName = "candidate_application_id_sequence",
+            allocationSize = 1
+    )
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,
+            generator = "candidate_application_id_sequence"
+    )
     private Long id;
     @Column(name = "application_number")
-    private String ApplicationNumber;
-    @OneToOne
-   @PrimaryKeyJoinColumn(name = "candidate_id")
-    private Candidate CandidateId;
+    private String applicationNumber;
+    @OneToOne()
+    @PrimaryKeyJoinColumn(name = "candidate_id")
+    private Candidate candidateId;
     @Column(name = "enrollment_type")
     private EnrollmentType enrollmentType;
     @Column(name = "status")
@@ -31,4 +37,6 @@ public class CandidateApplication {
     @Column(name = "course")
     @JsonProperty("course")
     private String programOfChoice;
+
+
 }
